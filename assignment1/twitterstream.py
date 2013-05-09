@@ -1,12 +1,12 @@
 import oauth2 as oauth
 import urllib2 as urllib
+import json
 
-# See Assginment 6 instructions or README for how to get these credentials
-access_token_key = "<Enter your access token key here>"
-access_token_secret = "<Enter your access token secret here>"
-
-consumer_key = "<Enter consumer key>"
-consumer_secret = "<Enter consumer secret>"
+tkn = json.load(open('token.json'))
+access_token_key = tkn['access_token_key']
+access_token_secret = tkn['access_token_secret']
+consumer_key = tkn['consumer_key']
+consumer_secret = tkn['consumer_secret']
 
 _debug = 0
 
