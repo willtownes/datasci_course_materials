@@ -4,27 +4,7 @@ Compute and return sentiment scores for all words in the tweets that were not fo
 '''
 
 import sys,re,json
-#from tweet_sentiment import makeSentDict,computeScore
-
-########This code is copied from tweet_sentiment.py, since the autograder doesn't allow imports#######
-def makeSentDict(sentFile="AFINN-111.txt"):
-    scores = {} # initialize an empty dictionary
-    with open(sentFile) as afinnfile:
-        for line in afinnfile:
-            term, score  = line.split("\t")  # The file is tab-delimited. "\t" means "tab character"
-            scores[term] = int(score)  # Convert the score to an integer.
-    return scores
-    
-def computeScore(tweet,sd):
-    '''take a tweet object and compute its sentiment score based on a given sentiment dictionary (sd)'''
-    words = tweet["text"].split() #split text by spaces and return list of words
-    score = 0
-    for word in words:
-        try: points = sd[word]
-        except KeyError: points = 0
-        score += points
-    return score
-###################################################End Copied Code block################################
+from tweet_sentiment import makeSentDict,computeScore
 
 def simplifyTweet(tweet):
     '''given a tweet object, return a dictionary containing the text and a placeholder None score to facilitate easier processing downstream'''
