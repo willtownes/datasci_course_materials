@@ -1,1 +1,3 @@
 *token.json
+*.pyc
+*output*.txt
