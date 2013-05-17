@@ -21,3 +21,7 @@ select distinct docid from frequency f1 where term='transactions'
 INTERSECT
 select distinct docid from frequency f2 where term='world'
 );
+--problem 2
+select * from (
+select A.row_num,B.col_num,sum(A.value*B.value) from A,B where A.col_num = B.row_num group by A.row_num,B.col_num
+) x where x.row_num = 2 and x.col_num = 3;
