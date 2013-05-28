@@ -53,6 +53,17 @@ def mapper(record):
           is_straight = True 
           break
     
+    is_4cardstraight = False
+    if is_straight: pass
+    else:
+        for i in range(0, 11): 
+            if (counts[straightrunfaces[i]] and 
+             counts[straightrunfaces[i+1]] and 
+             counts[straightrunfaces[i+2]] and 
+             counts[straightrunfaces[i+3]]): 
+                is_4cardstraight = True 
+                break
+    
     is_quad, is_trip, is_pair, is_two_pair = False, False, False, False 
     faces = 'A23456789TJQK' 
     for i in range(0, len(faces)): 
@@ -77,6 +88,8 @@ def mapper(record):
          mr.emit_intermediate('flush', '1') 
     elif is_straight: 
          mr.emit_intermediate('straight', '1') 
+    elif is_4cardstraight:
+        mr.emit_intermediate('4cardstraight','1')
     elif is_trip: 
          mr.emit_intermediate('3ofakind', '1') 
     elif is_two_pair: 
