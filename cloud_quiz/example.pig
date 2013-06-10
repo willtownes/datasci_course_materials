@@ -20,6 +20,6 @@ count_by_object = foreach objects generate flatten($0), COUNT($1) as count PARAL
 count_by_object_ordered = order count_by_object by (count)  PARALLEL 50;
 
 -- store the results in the folder /user/hadoop/example-results
-store count_by_object_ordered into '/user/hadoop/example-results' using PigStorage();
+--store count_by_object_ordered into '/user/hadoop/example-results' using PigStorage();
 -- Alternatively, you can store the results in S3, see instructions:
--- store count_by_object_ordered into 's3n://superman/example-results';
+store count_by_object_ordered into 's3n://courseradatascience/example-results';
